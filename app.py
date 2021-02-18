@@ -14,7 +14,7 @@ def index():
 @app.route('/rules/<rule_id>/')
 @app.route('/rules/', defaults={'rule_id': None})
 def get_rule(rule_id):
-    with open('%s/rules.json' % Path().absolute()) as fs:
+    with open('%s/roaaas/rules.json' % Path().absolute()) as fs:
         db = json.loads(fs.read())
     if rule_id is None:
         return db
