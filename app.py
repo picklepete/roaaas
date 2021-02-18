@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 from flask import Flask, render_template, abort
 
 app = Flask(__name__)
@@ -13,7 +14,7 @@ def index():
 @app.route('/rules/<rule_id>/')
 @app.route('/rules/', defaults={'rule_id': None})
 def get_rule(rule_id):
-    with open('rules.json') as fs:
+    with open('%s/rules.json' % Path().absolute()) as fs:
         db = json.loads(fs.read())
     if rule_id is None:
         return db
